@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumiendo la API de HTTP Cat</title>
+    <link rel="stylesheet" href="styleCat.css" />
+</head>
+<body>
+    <header>
+        <div class="titulo-inicio">
+            <h1>Consumo de la API HTTP Cat</h1>
+        </div>
+      </header>
+    <p>Ingresa un código de estado HTTP para ver una imagen representativa.</p>
+    <input type="number" id="statusCode" placeholder="Por ejemplo: 404" />
+    <button onclick="obtenerImagenHttpCat()">Obtener Imagen</button>
+    <button id="downloadButton" onclick="descargarImagen()">Descargar imagen</button>
+    <br>
+    <div id="imageContainer">
+    <img id="catImage" src="" alt="Imagen HTTP Cat" />
+    </div>
+
+    <script>
+        function obtenerImagenHttpCat() {
+            const code = document.getElementById('statusCode').value;
+            if (!code) {
+                alert('Por favor, ingresa un código de estado HTTP.');
+                return;
+            }
+            document.getElementById('catImage').src = `https://http.cat/${code}.jpg`;
+        }
+
+        function descargarImagen() {
+            const imageUrl = document.getElementById('catImage').src;
+        
+            if (!imageUrl || imageUrl === window.location.href) {
+                alert('Primero obtén una imagen antes de descargarla.');
+                return;
+            }
+        
+            // Abre la imagen en una nueva pestaña para permitir la descarga manual
+            window.open(imageUrl, '_blank');
+        }
+        
+    </script>
+</body>
+</html>
