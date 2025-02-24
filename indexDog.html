@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumiendo la API de HTTP Dog</title>
+    <link rel="stylesheet" href="styleDog.css" />
+</head>
+<body>
+    <header>
+        <div class="titulo-inicio">
+            <h1>Consumo de la API HTTP Dog</h1>
+        </div>
+    </header>
+    <p>Ingresa un código de estado HTTP para ver una imagen representativa.</p>
+    <input type="number" id="statusCode" placeholder="Por ejemplo: 404" />
+    <button onclick="obtenerImagenHttpDog()">Obtener imagen</button>
+    <button id="downloadButton" onclick="descargarImagen()">Descargar imagen</button>
+    <br>
+    <div id="imageContainer">
+        <img id="dogImage" src="" alt="Imagen HTTP Dog" />
+    </div>
+    <br>
+
+    <script>
+        function obtenerImagenHttpDog() {
+            const code = document.getElementById('statusCode').value;
+            if (!code) {
+                alert('Por favor, ingresa un código de estado HTTP.');
+                return;
+            }
+            const imageUrl = `https://http.dog/${code}.jpg`;
+
+            fetch(imageUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Código no válido o imagen no encontrada.');
+                    }
+                    document.getElementById('dogImage').src = imageUrl;
+                    document.getElementById('downloadButton').style.display = 'inline-block';
+                })
+                .catch(error => {
+                    console.error('Error al obtener la imagen:', error);
+                    alert('Error al obtener la imagen. Verifica el código e intenta de nuevo.');
+                });
+        }
+
+        function descargarImagen() {
+            const image = document.getElementById('dogImage').src;
+            fetch(image)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = 'http_dog.jpg';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                })
+                .catch(error => console.error('Error al descargar la imagen:', error));
+        }
+    </script>
+</body>
+</html>

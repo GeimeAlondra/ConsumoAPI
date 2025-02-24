@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: lightyellow;
+}
+h1{
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+    font: 700 30px 'Arial';
+}
+.titulo-inicio{
+    background-color: lightsalmon;
+    padding: 5px;
+    text-align: center;
+}
+p{
+    margin: 45px 0 25px 0;
+    font-size: 20px;
+    color: black;
+}
+img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+#imageContainer {
+    padding: 0;
+    width: 325px; 
+    height: 325px; 
+    margin: 30px auto 20px;
+    border: 2px solid lightsalmon; 
+    border-radius: 12px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: lightyellow;
+    box-shadow: 0 4px 12px lightsalmon; 
+    overflow: hidden;
+}
+#imageContainer img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+input {
+    padding: 12px;
+    width: 200px;
+    margin: 20px 5px;
+    border: 1px solid black;
+    background-color: lightcoral;
+    border-radius: 4px;
+    font-size: 16px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+button {
+    padding: 12px 24px;
+    margin: 20px 5px;
+    cursor: pointer;
+    background-color: lightsalmon;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    font-size: 16px;
+}
+button:hover {
+    background-color: lightcoral;
+}
